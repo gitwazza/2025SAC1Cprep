@@ -1,2 +1,2 @@
 # This is step 1
-[links](../README.md)
+Return to index [links](../README.md)
