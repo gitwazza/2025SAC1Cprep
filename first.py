@@ -3,7 +3,7 @@ import csv
 print("getting started!")
 
 
-class Booking:
+class Bookings:
 
     def __init__(self, num):
         self.num = int(num)
@@ -51,6 +51,9 @@ class Booking:
         for book in sorted(books, key=lambda book: book['first']): #lambda function
             print(book)
 
+def main():
+    my_booking = Bookings(3)
+    my_booking.refile4()
 
-my_booking = Booking(3)
-my_booking.refile4()
+if __name__ == "__main__":
+    main()
