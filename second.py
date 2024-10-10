@@ -1,7 +1,40 @@
+# to do - can introduce private and protected attributes as well as getter and setter
+# and have students learn how they could use either an attribute or private property or
+# protected property/attribute
+
+# In this program we can extend the OOP nature of first.py by creating another class
+# In the same way the Bookings class abstracts the Booking list as an object, we can
+# create a Booking class to abstract individual bookings within the Bookings list.
+
+# When creating a 'Booking' class we ideally want the class attributes to be
+# accessed directly by functions (methods) within the class.
+#
+# As adding or updating a booking should ideally involve some form of validation we
+# need to consider where validation code should occur. For example, when adding a booking
+# should our code's __inti__ method create an empty booking, which our code subsequently
+# adds attribute values to, or should we add all the attribute values when the __init__
+# method is run. Either way there is an issue, in that as soon as the Booking object is
+# instantiated it has been created, and so effectively we may have an Booking object
+# with some incorrect value. There are several ways we might try to solve this dilemma
+# one is that we might try to validate data prior to attempting to create the new booking
+# or the other way is to leave the validation up to methods within the Booking class.
+# The second method is more inline with OOP as we are making the code within the class
+# responsible for it's own functionality. However, we need to handle the fact that
+# we may attempt to make an object and not succeed but still have an object with an
+# error that we don't want.
+# This introduces some further functionality used in Python OOP.
+# This is getter and setter functions.
+
 import csv
 
 print("getting started!")
 
+# In this example a 'property function' is introduced, and this involves the introduction
+# of getter and setter functions.
+# The syntax for getter and setter functionality in Python is a bit unusual.
+#  As an example the 'first'
+# name will actually be stored in the attribute 'self._first'. Whereas 'self.first',
+# which does not include the '_' infront of 'first' represent the property function.
 class Booking:
     def __init__(self, first, last):
         # as property function exists for 'first' the following will call the setter
@@ -19,14 +52,14 @@ class Booking:
     # This is getter function
     @property
     def first(self):
-        return self._first
+        return self.__first
 
     # This is a corresponding setter function for @property
     @first.setter
     def first(self, first):
         if not first:
             raise ValueError("first name empty")
-        self._first = first
+        self.__first = first
 
 class Bookings:
 
@@ -38,19 +71,6 @@ class Bookings:
     # reads each line into a list and then sorts and prints
 
     # reads the file line by line to create a list of dictionaries
-    def refile3(self):
-        books = []
-        with open('allbookings.txt') as file:
-            for line in file:
-                first, last = line.rstrip().split(",")
-                # book = {}             # these 3 lines more verbose than subsequent line
-                # book['first'] = first
-                # book['last'] = last
-                book = {'first': first, 'last': last}
-                books.append(book)
-
-        for book in sorted(books, key=lambda book: book['first']): #lambda function
-            print(book)
 
     def refile4(self):
         self.books = []
