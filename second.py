@@ -47,6 +47,7 @@ class Booking:
         return f'{self.first} {self.last}'
 
     def __del__(self):
+        # This can be used during debugging to show that the object was destroyed
         print('destroying the object')
 
     # This is getter function
@@ -60,6 +61,20 @@ class Booking:
         if not first:
             raise ValueError("first name empty")
         self.__first = first
+
+    # This is getter function
+    @property
+    def last(self):
+        return self.__first
+
+    # This is a corresponding setter function for @property
+    @last.setter
+    def last(self, last):
+        print("running last...............")
+        if not last:
+            raise ValueError("last name empty")
+        self.__last = last
+
 
 class Bookings:
 
